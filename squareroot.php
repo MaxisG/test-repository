@@ -1,25 +1,4 @@
-github put it on
-
-
-/**
-Bizz-Buzz. Game rules: count from 1 to 100. If a number is divisible by 3, say Bizz instead of the number. If a number is divisible by 5, say Buzz instead of the number. If the number is divisible by both 3 and 5, say Bizz-Buzz.
-**/
-
-function bizzBuzz() {
-
-    for($i = 1; $i <= 100; $i++){
-        if($i % 15 == 0){
-            echo "Bizz-Buzz" . PHP_EOL;
-        } elseif(($i % 3) == 0){
-            echo "Bizz" . PHP_EOL;
-        } elseif(($i % 5) == 0){
-            echo "Buzz" . PHP_EOL;
-        } else {
-            echo "$i" . PHP_EOL;
-        }
-    
-    }
-}
+<?php
 
 /**
 Square Root. You just found out that the browser used by our most important customer has a flaw: its javascript implementation lacks a square root method. Given an argument which is guaranteed to be a positive integer greater than 3 and a degree of precision, write a function to approximate the square root of the integer to the precision requested.
@@ -40,13 +19,22 @@ function mySqrRt($num, $precision) {
         $guess = ($high + $low) / 2;
         if(($guess * $guess) == $num){
             $closeEnough = true;        
-        }  elseif(($guess * $guess) > $num){
-            $high = $guess;
+        }  elseif((round($guess,$precision) == $high) || (round($guess,$precision) == $low)){
+		    if(($guess * guess) > $num){
+			    $guess = $low;
+		    } else {
+			    $guess = $high;
+		    }
+		    $closeEnough = true;
+    	}elseif(($guess * $guess) > $num){
+            $high = round($guess,$precision);
         } else {
-            $low = $precision;
+            $low = round($guess,$precision);
         }
         
     }
     return $guess;
     
 }
+
+?>
