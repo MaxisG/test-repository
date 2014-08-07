@@ -13,7 +13,7 @@ function mySqrRt($num, $precision) {
     while (!$closeEnough) {
         $guess = ($high + $low) / 2;
         if(($guess * $guess) == $num){
-
+            $guess = round($guess,$precision);
             $closeEnough = true;
         } elseif((round($guess,$precision) == $high) || (round($guess,$precision) == $low)){
                 if(($guess * $guess) > $num){
